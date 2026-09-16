@@ -1,6 +1,8 @@
 name: Publish APK Release
 
 on:
+  push:
+    tags: ['v*']
   workflow_dispatch:
     inputs:
       tag:
@@ -17,14 +19,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: arena/01a0aabc-apkstudio
 
       - name: Create release and upload APK
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.event.inputs.tag || github.ref_name }}
         run: |
-          TAG="${{ inputs.tag }}"
+          echo "Publishing $TAG"
+          ls -la release/
           if ! gh release view "$TAG" >/dev/null 2>&1; then
             gh release create "$TAG" \
               --title "ApkStudio $TAG" \
