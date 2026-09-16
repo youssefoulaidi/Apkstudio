@@ -2,6 +2,11 @@
 
 **ApkStudio** هو تطبيق أندرويد يحوّل أي مشروع أندرويد بصيغة **ZIP** إلى نسخة **Debug APK** عبر البناء السحابي على **GitHub Actions** — كل ذلك من هاتفك، بدون كمبيوتر وبدون Android Studio.
 
+## ⬇️ تنزيل التطبيق
+
+- **صفحة الإصدارات:** https://github.com/youssefoulaidi/Apkstudio/releases
+- **آخر نسخة (v1.0.0):** https://github.com/youssefoulaidi/Apkstudio/releases/download/v1.0.0/ApkStudio-debug.apk
+
 ## كيف يعمل؟
 
 ```
