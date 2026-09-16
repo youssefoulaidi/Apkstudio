@@ -1,5 +1,6 @@
 package com.apkstudio.app.ui.screens
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,7 +27,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import com.apkstudio.app.AppGraph
-import com.apkstudio.app.BuildConfig
 import com.apkstudio.app.R
 import com.apkstudio.app.ui.components.ScreenScaffold
 import com.apkstudio.app.ui.components.SectionTitle
@@ -109,7 +109,7 @@ fun SettingsScreen(onBack: () -> Unit, onLoggedOut: () -> Unit) {
             )
             Spacer(Modifier.height(8.dp))
             Text(
-                text = stringResource(R.string.version_label, BuildConfig.VERSION_NAME),
+                text = stringResource(R.string.version_label, appVersionName(context)),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -137,5 +137,14 @@ fun SettingsScreen(onBack: () -> Unit, onLoggedOut: () -> Unit) {
                 }
             }
         )
+    }
+}
+
+private fun appVersionName(context: Context): String {
+    return try {
+        @Suppress("DEPRECATION")
+        context.packageManager.getPackageInfo(context.packageName, 0).versionName ?: "1.0.0"
+    } catch (_: Exception) {
+        "1.0.0"
     }
 }
