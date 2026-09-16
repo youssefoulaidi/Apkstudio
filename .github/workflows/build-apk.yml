@@ -52,3 +52,15 @@ jobs:
             git pull --rebase origin "${GITHUB_REF_NAME}" || true
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
+
+      - name: Save build log on failure
+        if: failure()
+        run: |
+          mkdir -p release
+          tail -c 200000 build-output.txt > release/last-build-log.txt || true
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f release/last-build-log.txt
+          git commit -m "Save build log [skip ci]" || echo "nothing to commit"
+          git pull --rebase origin "${GITHUB_REF_NAME}" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}" || true

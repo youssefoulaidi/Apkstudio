@@ -12,6 +12,7 @@ local.properties
 # APKs (the CI commits release/ApkStudio-debug.apk explicitly with -f)
 *.apk
 *.aab
+release/last-build-log.txt
 
 # Signing
 *.jks
