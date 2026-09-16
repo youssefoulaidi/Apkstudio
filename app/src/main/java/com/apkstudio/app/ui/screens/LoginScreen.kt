@@ -52,6 +52,10 @@ class LoginViewModel : ViewModel() {
     var failure by mutableStateOf<AppFailure?>(null)
         private set
 
+    fun clearFailure() {
+        failure = null
+    }
+
     fun login(context: Context, onDone: () -> Unit) {
         if (loading) return
         if (tokenText.isBlank()) {

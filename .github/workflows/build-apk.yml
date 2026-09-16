@@ -29,7 +29,19 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Build Debug APK
-        run: chmod +x gradlew && ./gradlew assembleDebug --stacktrace --no-daemon
+        run: |
+          {
+            echo "=== workspace ==="
+            pwd
+            ls -la
+            echo "=== java ==="
+            java -version
+            echo "=== wrapper ==="
+            chmod +x gradlew
+            ./gradlew --version
+            echo "=== build ==="
+            ./gradlew assembleDebug --stacktrace --no-daemon
+          } > build-output.txt 2>&1
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4

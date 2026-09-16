@@ -177,13 +177,28 @@ fun RepoListScreen(
             // Resume banner for a build left in progress.
             AppGraph.flow.run?.let { run ->
                 if (run.status != "completed") {
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onRepoSelected() }
-                    ) {
-                        // Handled by caller navigation state; no-op visual is avoided:
-                        // tapping re-enters the flow via the selected repo.
+                    Card(modifier = Modifier.fillMaxWidth()) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(12.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = stringResource(
+                                    R.string.run_label,
+                                    run.runNumber,
+                                    run.headBranch ?: ""
+                                ),
+                                style = MaterialTheme.typography.bodyMedium,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.weight(1f)
+                            )
+                            TextButton(onClick = onResumeBuild) {
+                                Text(stringResource(R.string.btn_resume_build))
+                            }
+                        }
                     }
                     Spacer(Modifier.height(12.dp))
                 }
