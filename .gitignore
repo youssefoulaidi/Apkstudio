@@ -1,0 +1,21 @@
+# Gradle
+.gradle/
+build/
+app/build/
+local.properties
+
+# Android Studio
+*.iml
+.idea/
+.DS_Store
+
+# APKs (the CI commits release/ApkStudio-debug.apk explicitly with -f)
+*.apk
+*.aab
+
+# Signing
+*.jks
+*.keystore
+
+# Local overrides
+local.defaults.properties

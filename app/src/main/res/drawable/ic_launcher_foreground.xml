@@ -1,0 +1,24 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Arrow shaft -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,26h8v26h-8z" />
+    <!-- Arrow head -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,68L36,50h9v-7h18v7h9z" />
+    <!-- Tray -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,74h48a4,4 0 0 1 0,8H30a4,4 0 0 1 0,-8z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,60h8v14h-8z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M70,60h8v14h-8z" />
+</vector>
